@@ -37,6 +37,8 @@ export class UserData {
     return this.storage.remove(this.HAS_LOGGED_IN).then(() => {
       return this.storage.remove('username');
     }).then(() => {
+      return this.storage.remove('address');
+    }).then(() => {
       return this.storage.remove('seed');
     }).then(() => {
       window.dispatchEvent(new CustomEvent('user:logout'));
@@ -49,6 +51,16 @@ export class UserData {
 
   getUsername(): Promise<string> {
     return this.storage.get('username').then((value) => {
+      return value;
+    });
+  }
+
+  setAddress(address: string): Promise<any> {
+    return this.storage.set('address', address);
+  }
+
+  getAddress(): Promise<string> {
+    return this.storage.get('address').then((value) => {
       return value;
     });
   }

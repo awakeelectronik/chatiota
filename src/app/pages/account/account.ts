@@ -13,12 +13,23 @@ import { UserData } from '../../providers/user-data';
 })
 export class AccountPage implements AfterViewInit {
   username: string;
+  wallet: string;
+
 
   constructor(
     public alertCtrl: AlertController,
     public router: Router,
-    public userData: UserData
+    public userData: UserData,
+    public iota: UserData
   ) { }
+
+  ionViewWillEnter(){
+    this.userData.getAddress().then(wallet => {
+      this.wallet = wallet
+      console.log(wallet)
+    })
+  }
+      
 
   ngAfterViewInit() {
     this.getUsername();

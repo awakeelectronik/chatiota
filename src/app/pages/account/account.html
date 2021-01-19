@@ -10,8 +10,11 @@
 <ion-content>
   <div *ngIf="username" class="ion-padding-top ion-text-center">
     <img src="https://www.gravatar.com/avatar?d=mm&s=140" alt="avatar">
-    <h2>{{username}}</h2>
+    <h1>{{username}}</h1>
 
+    <h3>Mi dirección wallet</h3>
+    <h4>{{wallet}}</h4>
+    <p>Esta dirección es la que debes enviar a tus amigxs para que te escriban</p>
     <ion-list inset>
       <ion-item (click)="updatePicture()">Update Picture</ion-item>
       <ion-item (click)="changeUsername()">Change Username</ion-item>
