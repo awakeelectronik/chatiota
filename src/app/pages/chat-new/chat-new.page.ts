@@ -14,11 +14,20 @@ export class ChatNewPage implements OnInit {
   constructor(private router: Router, private tangle: TangleService) { }
 
   ngOnInit() {
-    //this.tangle.sendMessage("un mensaje", "MZ9JP9NN9IFDCHNDNOCMBIREWZIK9KERVEQZ9RTKYFOXBUGLTGRND9FOQ9IRQXBNCMXHMKYWIGWXKYORZ");
   }
 
   startChat() {    
     console.log(this.addressReceiver)
-    this.router.navigateByUrl(`/chats/${this.addressReceiver}`);
+    if(this.validation())
+      this.router.navigateByUrl(`/chats/${this.addressReceiver}`);
+    else 
+      //lanzar notificación de dirección incorrecta
+      console.log("-.")
+  }
+
+  validation(): boolean {
+    if(this.addressReceiver.length==81)
+      return true;
+    else return false
   }
 }

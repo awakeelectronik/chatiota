@@ -58,7 +58,8 @@
         <ion-label><sub>11/10 02:26 </sub> Mensaje 6</ion-label>
       </ion-item>
     </ion-list>
-    <div slot="fixed" style="bottom: 0;">
-      <h1>Fixed Content</h1>
+    <div slot="fixed">
+      <ion-input [(ngModel)]="message" placeholder="Enviar mensaje"></ion-input>
+      <ion-icon name="paper-plane-outline"></ion-icon>
     </div>
 </ion-content>

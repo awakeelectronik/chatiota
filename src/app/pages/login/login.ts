@@ -51,6 +51,7 @@ export class LoginPage {
       .then(acc => {
         console.log(acc)
         this.userData.setAddress(acc.latestAddress)
+        
         return iota.wereAddressesSpentFrom([acc.latestAddress])
       })
       .then(a => {
