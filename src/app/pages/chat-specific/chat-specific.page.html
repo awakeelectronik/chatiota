@@ -59,7 +59,7 @@
       </ion-item>
     </ion-list>
     <div slot="fixed">
-      <ion-input [(ngModel)]="message" placeholder="Enviar mensaje"></ion-input>
-      <ion-icon name="paper-plane-outline"></ion-icon>
+      <ion-input (keyup.enter)="send()" [(ngModel)]="message" placeholder="Enviar mensaje"></ion-input>
+      <ion-icon (click)="send()" name="paper-plane-outline"></ion-icon>
     </div>
 </ion-content>
