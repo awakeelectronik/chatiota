@@ -19,8 +19,7 @@ export class AccountPage implements AfterViewInit {
   constructor(
     public alertCtrl: AlertController,
     public router: Router,
-    public userData: UserData,
-    public iota: UserData
+    public userData: UserData
   ) { }
 
   ionViewWillEnter(){
@@ -29,7 +28,6 @@ export class AccountPage implements AfterViewInit {
       console.log(wallet)
     })
   }
-      
 
   ngAfterViewInit() {
     this.getUsername();

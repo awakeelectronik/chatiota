@@ -21,7 +21,6 @@ export class ChatSpecificPage implements OnInit {
 
   
   send(){
-    console.log("as")
     let messageToSend = this.message
     this.tangle.sendMessage(messageToSend, this.addressReceiver);
     this.message = ""

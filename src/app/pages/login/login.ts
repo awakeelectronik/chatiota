@@ -2,12 +2,9 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { composeAPI } from '@iota/core';
-
 import { UserData } from '../../providers/user-data';
-
 import { UserOptions } from '../../interfaces/user-options';
-
+import { TangleService } from '../../providers/tangle.service';
 
 @Component({
   selector: 'page-login',
@@ -20,12 +17,11 @@ export class LoginPage {
 
   constructor(
     public userData: UserData,
-    public router: Router
+    public router: Router,
+    private tangle: TangleService
   ) { }
 
   onLogin(form: NgForm) {
-
-
     this.submitted = true;
 
     if (form.valid) {
@@ -43,25 +39,11 @@ export class LoginPage {
     const username = this.login.username.toUpperCase();
     const seed = `${userpass}${username}${join}`.substr(0, 81)
 
-    const iota = composeAPI({
-      provider: 'https://nodes.thetangle.org:443'
-    });
-    
-    iota.getAccountData(seed)
-      .then(acc => {
-        console.log(acc)
-        this.userData.setAddress(acc.latestAddress)
-        
-        return iota.wereAddressesSpentFrom([acc.latestAddress])
-      })
-      .then(a => {
-        console.log("wereAddressesSpentFrom: ", a)
-      })
-      .catch(a => console.log(a))
+    this.tangle.setAddressFromSeed(seed)
 
-      return seed
+    return seed
   }
-
+  
   onSignup() {
     this.router.navigateByUrl('/signup');
   }
