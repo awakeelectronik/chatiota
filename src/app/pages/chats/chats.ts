@@ -28,8 +28,10 @@ export class Chats implements OnInit {
   ngOnInit() {
     this.tangle.getTransactions()
       .then(transactions => {
-        console.log(transactions)
-        console.log(this.utils.orderTransactions(transactions))
+        // console.log(transactions)
+        this.conversations = this.utils.orderTransactions(transactions).sort((a, b) => parseInt(b.messages[b.messages.length-1].date) - parseInt(a.messages[a.messages.length-1].date));
+        console.log(this.conversations)
+        this.userData.saveConversations(this.conversations)
       })
   }
 }

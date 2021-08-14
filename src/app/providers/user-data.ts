@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { Conversation } from '../interfaces/conversation';
 
 
 @Injectable({
@@ -25,6 +26,16 @@ export class UserData {
     return this.storage.set("seed", seed).then(() => {
       return window.dispatchEvent(new CustomEvent('user:login'));
     });
+  }
+
+  saveConversations(conversations: Conversation[]): Promise<any> {
+    return this.storage.set("conversations", JSON.stringify(conversations))
+  }
+
+  getConversation(address: string): Promise<Conversation> {
+    return this.storage.get("conversations").then((conversations) => {
+      return JSON.parse(conversations).find(c => c.address == address)
+    })
   }
 
   getSeed(): Promise<any> {

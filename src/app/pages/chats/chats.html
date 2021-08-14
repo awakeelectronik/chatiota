@@ -7,57 +7,26 @@
 <ion-content>
   <ion-list>
     <ion-list-header>
-      Recent Conversations
+      Ordenadas desde la más reciente
     </ion-list-header>
 
-    <ion-item routerLink="9HWQSSSIIAJWFKVFMESQGGMICKOBOSVAUVSCKNMZFNZM9CVHRCBAUJRWNPEYHNERVYDVGEHKGZJO99999">
+    <ion-item *ngFor ="let conversation of conversations" routerLink="{{conversation.address}}">
       <ion-avatar slot="start">
         <img src="/assets/img/speakers/cheetah.jpg">
+        <!-- <img src="/assets/img/speakers/cheetah.jpg"> -->
       </ion-avatar>
       <ion-label>
-        <h2>Finn</h2>
-        <h6>11/23 05:29</h6>
-        <p>Listen, I've had a pretty messed up day...</p>
+        <h4>{{conversation.address}}</h4>
+        <h6>{{ conversation.messages[conversation.messages.length - 1].date*1000 | date:'medium'}}</h6>
+        <p>{{ conversation.messages[conversation.messages.length - 1].text}}</p>
       </ion-label>
     </ion-item>
 
-    <ion-item routerLink="1">
-      <ion-avatar slot="start">
-        <img src="/assets/img/speakers/cheetah.jpg">
-      </ion-avatar>
-      <ion-label>
-        <h2>Han</h2>
-        <h4>11/23 05:29</h4>
-        <p>I've got enough on my plate as it is, and I...</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item routerLink="1">
-      <ion-avatar slot="start">
-        <img src="/assets/img/speakers/duck.jpg">
-      </ion-avatar>
-      <ion-label>
-        <h2>Rey</h2>
-        <h4>11/23 05:29</h4>
-        <p>You will remove these restraints and leave...</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item routerLink="1">
-      <ion-avatar slot="start">
-        <img src="/assets/img/speakers/cheetah.jpg">
-      </ion-avatar>
-      <ion-label>
-        <h2>Luke</h2>
-        <h4>11/23 05:29</h4>
-        <p>I feel the good in you, the conflict...</p>
-      </ion-label>
-    </ion-item>
   </ion-list>
 
   <ion-list>
     <ion-list-header>
-      Online
+      Sin apodo
     </ion-list-header>
 
     <ion-item routerLink="1">

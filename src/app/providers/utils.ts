@@ -10,9 +10,9 @@ export class Utils {
   orderTransactions(transactions: Array<Object>): Conversation[] {
     var conversations: Conversation[] = []
     transactions.forEach(trans => {
-      let index = conversations.findIndex(i => i.address==(trans["sender"] || trans["receiver"]))
-      if(index==-1)conversations.push({address: trans["sender"] || trans["receiver"], messages: [{text: trans["message"], date:trans["date"]}]})
-      else conversations[index].messages.push({text: trans["message"], date:trans["date"]})
+      let index = conversations.findIndex(i => i.address==(trans["sender"] || trans["receiver"])) 
+      if(index==-1)conversations.push({address: trans["sender"] || trans["receiver"], messages: [{text: trans["message"], date:trans["date"], receiver: trans["sender"]?true:false}]})
+      else conversations[index].messages.push({text: trans["message"], date:trans["date"], receiver: trans["sender"]?true:false})
     })
 
     return conversations
