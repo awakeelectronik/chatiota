@@ -13,7 +13,13 @@
     <h1>{{username}}</h1>
 
     <h3>Mi dirección wallet</h3>
-    <h4>{{wallet}}</h4>
+    <p>{{wallet}}</p>
+    <ion-item button (click)="copyAddress()" detail="false">
+      <ion-icon slot="start" name="copy"></ion-icon>
+      <ion-label>
+        Copiar dirección
+      </ion-label>
+    </ion-item>
     <p>Esta dirección es la que debes enviar a tus amigxs para que te escriban</p>
     <ion-list inset>
       <ion-item (click)="updatePicture()">Update Picture</ion-item>

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
 
 import { AlertController } from '@ionic/angular';
 
@@ -19,7 +20,8 @@ export class AccountPage implements AfterViewInit {
   constructor(
     public alertCtrl: AlertController,
     public router: Router,
-    public userData: UserData
+    public userData: UserData,
+    private clipboard: Clipboard
   ) { }
 
   ionViewWillEnter(){
@@ -31,6 +33,10 @@ export class AccountPage implements AfterViewInit {
 
   ngAfterViewInit() {
     this.getUsername();
+  }
+  
+  copyAddress(){
+    this.clipboard.copy(this.wallet);
   }
 
   updatePicture() {

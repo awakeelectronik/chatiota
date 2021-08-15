@@ -3,8 +3,9 @@
     <h6>{{addressReceiver}}</h6>
 
     <ion-list style="margin-bottom: 3em;" *ngIf="conversation" >
-      <ion-item *ngFor ="let message of conversation.messages" >
-        <ion-label><sub>{{ message.date*1000 | date:'M/d, h:mm'}}</sub> {{message.text}}</ion-label>
+      <ion-item *ngFor ="let message of conversation.messages" lines="none">
+        <ion-label *ngIf="message.receiver; else sender" class="ion-text-end">{{message.text}} <sub>{{ message.date*1000 | date:'M/d, h:mm'}}</sub></ion-label>
+        <ion-label *ngIf="!message.receiver"><sub>{{ message.date*1000 | date:'M/d, h:mm'}}</sub> {{message.text}}</ion-label>
       </ion-item>
     </ion-list>
     <div slot="fixed">
