@@ -7,7 +7,7 @@ import { NotSeedGivenGuard } from './providers/not-seed-given.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/tutorial',
     pathMatch: 'full'
   },
   {

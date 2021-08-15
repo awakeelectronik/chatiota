@@ -17,11 +17,10 @@ export class ChatNewPage implements OnInit {
   }
 
   startChat() {    
-    console.log(this.addressReceiver)
     if(this.validation())
       this.router.navigateByUrl(`/chats/${this.addressReceiver}`);
     else 
-      //lanzar notificación de dirección incorrecta
+      //TODO lanzar notificación de dirección incorrecta
       console.log("-.")
   }
 

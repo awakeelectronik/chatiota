@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { MenuController, IonSlides } from '@ionic/angular';
 
+import { CheckTutorial } from '../../providers/check-tutorial.service';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -18,13 +19,14 @@ export class TutorialPage {
   constructor(
     public menu: MenuController,
     public router: Router,
-    public storage: Storage
+    public storage: Storage,
+    private tuto: CheckTutorial
   ) {}
 
+  
   startApp() {
-    this.router
-      .navigateByUrl('/login', { replaceUrl: true })
-      .then(() => this.storage.set('ion_did_tutorial', true));
+    this.storage.set('ion_did_tutorial', true)
+    this.tuto.sendTo()
   }
 
   onSlideChangeStart(event) {
@@ -36,7 +38,7 @@ export class TutorialPage {
   ionViewWillEnter() {
     this.storage.get('ion_did_tutorial').then(res => {
       if (res === true) {
-        this.router.navigateByUrl('/chats', { replaceUrl: true });
+        this.tuto.sendTo()
       }
     });
 

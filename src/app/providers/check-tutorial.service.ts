@@ -10,11 +10,20 @@ export class CheckTutorial implements CanLoad {
   canLoad() {
     return this.storage.get('ion_did_tutorial').then(res => {
       if (res) {
-        this.router.navigate(['/new']);
+        this.sendTo()
         return false;
       } else {
         return true;
       }
     });
+  }
+
+  sendTo(){
+    this.storage.get('seed').then(res => {
+      if(res && res.length == 81)
+        this.router.navigate(['/chats'])
+      else
+        this.router.navigate(['/login'])
+    })
   }
 }
