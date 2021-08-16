@@ -30,6 +30,11 @@ export class ChatSpecificPage implements OnInit {
     let messageToSend = this.message
     this.tangle.sendMessage(messageToSend, this.addressReceiver);
     this.message = ""
+    if(!this.conversation)
+      this.conversation = {
+        address: this.addressReceiver,
+        messages: []
+      }
     this.conversation.messages.push({
       text: messageToSend,
       date: Math.trunc(Date.now()/1000).toString(),
